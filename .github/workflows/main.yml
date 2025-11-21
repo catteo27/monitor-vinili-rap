@@ -1,0 +1,17 @@
+name: Monitor Vinili Rap
+
+on:
+  schedule:
+    - cron: "*/2 * * * *"
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - run: pip install requests beautifulsoup4 python-telegram-bot
+      - run: python monitor_vinili_telegram.py
