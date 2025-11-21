@@ -1,2 +1,0 @@
-# monitor-vinili-rap
-Vinyl 
