@@ -1,0 +1,22 @@
+name: Monitor Vinili Rap
+
+on:
+  schedule:
+    - cron: "*/2 * * * *"   # ogni 2 minuti = quasi tempo reale
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 python-telegram-bot
+
+      - name: Run monitor
+        run: python monitor_vinili_telegram.py
